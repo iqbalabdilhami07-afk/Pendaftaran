@@ -1,5 +1,4 @@
 <?php
-include 'koneksi.php';
 include 'function.php';
 
 $koneksi     = koneksi_db();
@@ -129,15 +128,57 @@ $jml_reguler = hitung_per_program($koneksi, "Reguler");
             font-size: 13px;
             text-align: center;
         }
+        .footer-link a:hover { text-decoration: underline; }
+        .menu-box {
+        background: #f9fbe7;
+        border: 1px solid #e0e0e0;
+        padding: 16px;
+        border-radius: 10px;
+        text-align: center;
+        margin: 20px auto;
+        max-width: 600px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .menu-box a {
+            color: #2e7d32;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        .menu-box a:hover { text-decoration: underline; }
+        .menu-box a {
+        display: block;
+        padding: 10px;
+        background: #e8f5e9;
+        border-radius: 6px;
+        }
+        .nav-link {
+        display: block;
+        padding: 10px;
+        background: #e8f5e9;
+        border-radius: 8px;
+        text-align: center;
+        margin-bottom: 10px;
+        font-weight: 600;
+        }
+
+        .container {
+        max-width: 1000px;
+        margin: auto;
+        }
+
+        .section {
+        margin-bottom: 20px;
+        }
     </style>
 </head>
 <body>
 
     <h2>🕌 Data Santri Terdaftar</h2>
-
-    <div class="topbar">
-        <a href="index.php">← Kembali ke Form Pendaftaran</a>
-        <span style="font-size:13px;color:#666">Total: <strong><?= $total ?> santri</strong></span>
+    <div class="menu-box">
+        <a href="daftar.php" class="nav-link">← Kembali ke Form Pendaftaran</a>
+        <a href="profil.php" class="nav-link">← Kembali ke Profil Pesantren</a>
     </div>
 
     <?php if (isset($_GET['status']) && $_GET['status'] == 'hapus'): ?>
@@ -218,6 +259,6 @@ $jml_reguler = hitung_per_program($koneksi, "Reguler");
             <?php endif; ?>
         </table>
     </div>
-
+    
 </body>
 </html>

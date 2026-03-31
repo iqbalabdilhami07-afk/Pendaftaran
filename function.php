@@ -4,10 +4,25 @@
 // FUNCTION KONEKSI DATABASE
 // ==============================
 function koneksi_db() {
-    $koneksi = mysqli_connect("localhost", "root", "", "db_pesantren");
+    if ($_SERVER['SERVER_NAME'] == 'localhost') {
+        $host = "localhost";
+        $user = "root";
+        $pass = "";
+        $db   = "db_pesantren";
+    } else {
+        $host = "sql112.infinityfree.com";
+        $user = "if0_41409875";
+        $pass = "FkVmefLxzJYQ";
+        $db   = "if0_41409875_webiqbal_db";
+    }
+
+    $koneksi = mysqli_connect($host, $user, $pass, $db);
+
+
     if (!$koneksi) {
         die("Koneksi gagal: " . mysqli_connect_error());
     }
+
     return $koneksi;
 }
 

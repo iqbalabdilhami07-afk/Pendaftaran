@@ -1,6 +1,5 @@
 <?php
 ob_start();
-include 'koneksi.php';
 include 'function.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -22,21 +21,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Cek duplikat menggunakan function
     if (cek_duplikat($koneksi, $data['nama_lengkap'], $data['tanggal_lahir'])) {
-        header("Location: index.php?status=duplikat");
+        header("Location: daftar.php?status=duplikat");
         exit;
     }
 
     // Simpan data menggunakan function
     if (simpan_santri($koneksi, $data)) {
         mysqli_close($koneksi);
-        header("Location: index.php?status=berhasil");
+        header("Location: daftar.php?status=berhasil");
         exit;
     } else {
         echo "Gagal menyimpan: " . mysqli_error($koneksi);
     }
 
 } else {
-    header("Location: index.php");
+    header("Location: daftar.php");
     exit;
 }
 ?>
